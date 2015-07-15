@@ -47,7 +47,7 @@ GCC_BOOTSTRAP_CONFIG= --target=${TARGET} \
 --prefix=${PREFIX} \
 --enable-interwork \
 --enable-multilib \
---enable-languages="c,c++,objc" \
+--enable-languages="c,c++" \
 --with-newlib \
 --without-headers \
 --disable-shared \
@@ -75,7 +75,7 @@ GCC_PASS2_CONFIG=--target=${TARGET} \
 --prefix=${PREFIX} \
 --enable-interwork \
 --enable-multilib \
---enable-languages="c,c++,objc" \
+--enable-languages="c,c++" \
 --with-newlib \
 --disable-shared \
 --with-system-zlib \
