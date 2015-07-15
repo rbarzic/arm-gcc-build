@@ -85,6 +85,11 @@ GCC_PASS2_CONFIG=--target=${TARGET} \
 --disable-nls 
 
 
+GDB_CONFIG= --target=${TARGET} \
+--prefix=${PREFIX} \
+--enable-interwork \
+--enable-multilib 
+
 
 get_gcc:
 	mkdir -p $(DOWNLOADED_SOFTWARES)
@@ -216,3 +221,24 @@ install_gcc_pass2:
 
 help:
 	echo "To be done..."
+
+
+###############################################################################
+#########  GDB final      Build/Installation ##################################
+###############################################################################
+
+
+extract_gdb:
+	mkdir -p $(EXTRACTED_SOFTWARES)	
+	tar xvzf $(DOWNLOADED_SOFTWARES)/gdb-$(GDB_VERSION).tar.gz --directory $(EXTRACTED_SOFTWARES)	
+
+configure_gdb:
+	mkdir -p $(BUILD_DIR)/gdb
+	cd  $(BUILD_DIR)/gdb  && $(EXTRACTED_SOFTWARES)/gdb-$(GDB_VERSION)/configure  $(GDB_CONFIG)
+
+build_gdb:
+	make -C $(BUILD_DIR)/gdb all
+
+install_gdb:
+	make -C $(BUILD_DIR)/gdb install
+
